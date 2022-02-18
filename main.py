@@ -1,17 +1,15 @@
 #Import Discord Package
 import discord
 import keep_alive
-from discord.ext import commands
-import pandas as pd
 import bs4
 import requests
 import os
 
 
-
 client = discord.Client()
 @client.event
 async def on_ready():
+    bot_channel = client.get_channel(943459425253986305)
     await client.change_presence(status=discord.Status.online,activity=discord.Game('with all this bread!'))
 
 
@@ -28,7 +26,7 @@ async def on_message(message):
         myCommands.add_field(name = "$ptarget", value= "Returns 12-month price forecasts according to multiple analysts")
         myCommands.set_footer(text="Lets get that bread!")
         myCommands.set_author(name ="BreadWinner$ Bot")
-        await message.channel.send(embed = myPrice)
+        await message.channel.send(embed = myCommands)
 
     if message.content.startswith('$price'):
         #Splitting the input from $price to read input text from user.
